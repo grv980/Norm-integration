@@ -1,0 +1,148 @@
+openapi: 3.0.1
+paths:
+  /api/v1/user/{userId}/blog:
+    post:
+      operationId: createUserBlog
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  nullable: false
+                content:
+                  type: string
+                  nullable: false
+        required: true
+      responses:
+        default:
+          description: createUserBlog default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+  /api/v1/blogs:
+    get:
+      operationId: getAll
+      parameters: []
+      responses:
+        default:
+          description: getAll default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+  /api/v1/user/{userId}/blog/{blogId}:
+    post:
+      operationId: updateUserBlog
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: blogId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  nullable: false
+                content:
+                  type: string
+                  nullable: false
+        required: true
+      responses:
+        default:
+          description: updateUserBlog default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+  /api/v1/users:
+    get:
+      operationId: displayAllUser
+      parameters: []
+      responses:
+        default:
+          description: displayAllUser default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+    post:
+      operationId: createUser
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName:
+                  type: string
+                  nullable: false
+        required: true
+      responses:
+        default:
+          description: createUser default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+  /api/v1/user/{userId}/blog/:
+    delete:
+      operationId: deleteUserBlog
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          description: deleteUserBlog default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+  /api/v1/user/{userId}/blogs:
+    get:
+      operationId: displayUserBlog
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          description: displayUserBlog default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+components:
+  schemas:
+    Object:
+      type: object
